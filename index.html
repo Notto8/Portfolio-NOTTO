@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio - Nattawat</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        integrity="sha512-papBMZ+o4a6r8bF0ZjHc1GvZ2tA2wq0kaM6po1tQv2A1yzLC6F3i7Q9P3+X+aZfI9hJ2p8Cw3yOZkMz6S4b1xQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+        :root {
+            --primary-color: #1e88e5; /* Blue */
+            --secondary-color: #0d47a1; /* Darker Blue */
+            --text-color: #0a1a3c; /* Very Dark Blue */
+            --background-light: #f7faff;
+            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--background-light);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* NAVIGATION BAR */
+        nav {
+            position: sticky;
+            top: 0;
+            background: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--secondary-color);
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            margin-left: 30px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* HERO SECTION */
+        .hero-section {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: white;
+            padding: 100px 20px 120px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-section img {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 6px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+            margin-bottom: 25px;
+        }
+
+        .hero-section h1 {
+            font-size: 56px;
+            font-weight: 800;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-section p {
+            font-size: 22px;
+            opacity: 1;
+            font-weight: 300;
+        }
+
+        /* MAIN CONTENT CONTAINER (Wrapper for all sections) */
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: -60px auto 50px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        /* SECTION CARDS (General Styling for all major sections) */
+        .section-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid #e4ecff;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.15);
+        }
+
+        .section-card h2 {
+            font-size: 32px;
+            margin-bottom: 30px;
+            color: var(--secondary-color);
+            font-weight: 700;
+            position: relative;
+        }
+
+        .section-card h2::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 5px;
+            background: var(--primary-color);
+            border-radius: 10px;
+        }
+
+        /* ABOUT ME Specific */
+        .about-me p {
+            font-size: 18px;
+            text-align: left; /* Changed from center for better readability */
+        }
+        
+        /* SKILLS Specific */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px 40px;
+        }
+
+        .skill-label {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--secondary-color);
+        }
+
+        .progress-bar {
+            height: 12px;
+            background: #e3edff;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background: linear-gradient(90deg, #1e88e5, #42a5f5);
+            border-radius: 6px;
+            transition: all 1.5s ease;
+        }
+        
+        /* PROJECTS Specific */
+        .project-grid {
+            display: grid; /* Explicitly set display grid */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            padding: 25px;
+            border-radius: 18px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .project-card a {
+             text-decoration: none;
+             display: block; /* Ensure the link wrapper spans the whole card if possible */
+        }
+
+        .project-card img {
+            height: 180px;
+            border-radius: 12px;
+            margin-bottom: 18px;
+            width: 100%; /* Ensure image fills its container */
+        }
+
+        .project-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--secondary-color); /* Ensure title color contrast */
+        }
+
+        .project-desc {
+            font-size: 16px;
+            color: #555;
+            margin: 8px 0 12px;
+        }
+        
+        .project-card strong {
+            display: block;
+            margin-top: 10px;
+            color: var(--primary-color);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* EDUCATION Specific */
+        .education-item {
+            padding-left: 20px;
+            border-left: 3px solid var(--primary-color);
+            margin-bottom: 30px;
+            position: relative; /* Setup for a potential timeline marker */
+        }
+
+        /* CONTACT Specific */
+        .contact-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .contact-grid a {
+            flex: 1 1 300px;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--text-color);
+            font-size: 18px;
+            font-weight: 500;
+            padding: 15px 20px;
+            border-radius: 10px;
+            background: #eaf3ff;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .contact-grid a i {
+            margin-right: 15px;
+            color: var(--primary-color);
+            font-size: 20px;
+        }
+
+        .contact-grid a:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .contact-grid a:hover i {
+            color: white;
+        }
+
+
+        /* FOOTER */
+        footer {
+            background: var(--secondary-color);
+            color: white;
+            padding: 30px;
+            font-weight: 400;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 40px;
+            }
+
+            .hero-section p {
+                font-size: 18px;
+            }
+
+            .section-card {
+                padding: 30px 20px;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                margin-top: 10px;
+            }
+            
+            .nav-links a {
+                margin: 0 10px;
+            }
+
+            .about-me p {
+                text-align: center; /* Center align on mobile */
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Nattawat.Dev</div>
+            <div class="nav-links">
+                <a href="#about"><i class="fas fa-user"></i> About</a>
+                <a href="#skills"><i class="fas fa-code"></i> Skills</a>
+                <a href="#projects"><i class="fas fa-laptop-code"></i> Projects</a>
+                <a href="#contact"><i class="fas fa-paper-plane"></i> Contact</a>
+            </div>
+        </div>
+    </nav>
+    
+    <section class="hero-section">
+        <img src="./pic/not.jpg" alt="Profile" />
+        <h1>NATTAWAT WONGPAN</h1>
+        <p>Frontend Developer • UX/UI Designer • Programmer</p>
+    </section>
+
+    <main class="container">
+        
+        <section id="about" class="section-card about-me">
+            <h2><i class="fas fa-user-circle"></i> About Me</h2>
+            <div class="content-wrapper">
+                <p>
+                    I am a Computer Science student with a strong passion for software development and continually learning new technologies. I am seeking an internship opportunity where I can apply my academic knowledge, gain valuable real-world experience, and contribute to meaningful projects in the IT field. My focus is on creating responsive, user-friendly interfaces.
+                </p>
+            </div>
+        </section>
+
+        <section id="skills" class="section-card">
+            <h2><i class="fas fa-tools"></i> Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <div class="skill-label">HTML — 80%</div>
+                    <div class="progress-bar"><div class="progress" data-progress="80"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-label">CSS — 80%</div>
+                    <div class="progress-bar"><div class="progress" data-progress="80"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-label">JavaScript — 70%</div>
+                    <div class="progress-bar"><div class="progress" data-progress="70"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-label">React — 75%</div>
+                    <div class="progress-bar"><div class="progress" data-progress="75"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-label">MongoDB — 80%</div>
+                    <div class="progress-bar"><div class="progress" data-progress="80"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-label">SQL — 80%</div>
+                    <div class="progress-bar"><div class="progress" data-progress="80"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-label">Docker — 50%</div>
+                    <div class="progress-bar"><div class="progress" data-progress="50"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-label">Git — 75%</div>
+                    <div class="progress-bar"><div class="progress" data-progress="75"></div></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section-card">
+            <h2><i class="fas fa-folder-open"></i> Featured Projects</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <a href="https://chayaninsom.github.io/Zellaly-Shop/" target="_blank">
+                        <img src="./pic/pj1.png" alt="Project 1: Zellaly E-commerce Shop">
+                    </a>
+                    <div class="project-title">Zellaly E-commerce Shop</div>
+                    <div class="project-desc">A modern e-commerce platform with responsive UI, focusing on clean design and user experience.</div>
+                    <strong> HTML, CSS, SQL</strong>
+                </div>
+                <div class="project-card">
+                    <img src="./pic/pj2.png" alt="Project 2: Reverse Course Website">
+                    <div class="project-title">Reverse Course Website</div>
+                    <div class="project-desc">A comprehensive training website designed to deliver engaging web development courses.</div>
+                    <strong>React, MongoDB, Docker</strong>
+                </div>
+                <div class="project-card">
+                    <img src="./pic/pj33.png" alt="Project 3: Chatbot Guruscore">
+                    <div class="project-title">Chatbot Guruscore</div>
+                    <div class="project-desc">An intelligent chatbot application leveraging modern large language models for interactive Q&A.</div>
+                    <strong>React, Python, Ollama3</strong>
+                </div>
+            </div>
+        </section>
+
+        <section id="education" class="section-card">
+            <h2><i class="fas fa-graduation-cap"></i> Education</h2>
+            <div class="education-item-wrapper">
+                <div class="education-item">
+                    <h3>Bachelor of Science in Computer Science</h3>
+                    <p>Sripatum University — Present </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section-card">
+            <h2><i class="fas fa-address-book"></i> Contact</h2>
+            <div class="contact-grid">
+                <a href="mailto:Nattawat.Won@spumail.net">
+                    <i class="fas fa-envelope"></i> Nattawat.Won@spumail.net
+                </a>
+                <a href="https://www.facebook.com/nattawat.wongpan.5" target="_blank">
+                    <i class="fab fa-facebook"></i> Facebook: Nattawat Wongpan
+                </a>
+                <a href="tel:0982873504">
+                    <i class="fas fa-phone"></i> 098-287-3504
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>© 2025 NATTAWAT WONGPAN — Built with Passion and Code</footer>
+
+    <script>
+        const progressBars = document.querySelectorAll('.progress');
+
+        function animateProgressBars() {
+            const trigger = window.innerHeight * 0.85;
+            progressBars.forEach(bar => {
+                const top = bar.getBoundingClientRect().top;
+                const progress = bar.dataset.progress;
+                // Only animate if the bar is visible and hasn't been animated yet (check width)
+                if (top < trigger && bar.style.width === "") {
+                    bar.style.width = progress + "%";
+                }
+            });
+        }
+
+        window.addEventListener('scroll', animateProgressBars);
+        window.addEventListener('load', animateProgressBars);
+    </script>
+
+</body>
+</html>
